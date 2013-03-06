@@ -281,7 +281,7 @@ Spaceships.prototype.createLWSS = function () {
 
 
 // Controller
-function gameOfLife($scope) {
+function gameOfLife($scope, $timeout) {
     $scope.create = function (rows, cols) {
         $scope.cells = new GameOfLifeHelpers().create(rows, cols, false);
     };
@@ -289,12 +289,39 @@ function gameOfLife($scope) {
     // Placeholder. Filled by calling create().
     $scope.cells = [];
 
+    // Placeholder. Filled by stop() and start().
+    $scope.stopping = false;
+    $scope.animating = false;
+
     $scope.flipCell = function (cell) {
         cell.alive = !cell.alive;
     };
 
+    // Run the game of life one iteration or step.
     $scope.step = function () {
         $scope.cells = new GameOfLifeHelpers().step($scope.cells);
+    };
+
+    // Stop any animation
+    $scope.stop = function () {
+        $scope.stopping = true;
+    };
+
+    // Animate the display
+    $scope.start = function () {
+        $scope.stopping = false;
+        $scope.animating = true;
+
+        $timeout(function animate() {
+            if (!$scope.stopping) {
+                $scope.step();
+                $timeout(animate, 300);
+            }
+            else {
+                $scope.stopping = false;
+                $scope.animating = false;
+            }
+        });
     };
 
     // Create a "block" still life

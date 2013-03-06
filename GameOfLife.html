@@ -16,10 +16,13 @@
 				</span>
 			</div>
             <br />
-            <button ng-click="step()"><i class="icon-step-forward"></i>Step 1</button>
-            <button disabled="true"><i class="icon-play"></i>Run</button>
+            <form class="form-inline">
+                <button ng-click="step()" ng-disabled="animating"><i class="icon-step-forward"></i>Step 1</button>
+                <button ng-click="start()" ng-disabled="animating"><i class="icon-play"></i>Start</button>
+                <button ng-click="stop()" ng-disabled="!animating"><i class="icon-stop"></i>Stop</button>
+            </form>
             <br />
-            <br />
+            <h4>Examples</h4>
             <form class="form-horizontal">
                 <div class="control-group">
                     <label class="control-label" for="stillLifes">Still Lifes:</label>
@@ -40,8 +43,8 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="oscillators">Spaceships:</label>
-                    <div class="btn-group" id="Div1">
+                    <label class="control-label" for="spaceships">Spaceships:</label>
+                    <div class="btn-group" id="spaceships">
                         <a class="btn" href="#" ng-click="createGlider()">Glider</a>
                         <a class="btn" href="#" ng-click="createLWSS()">Light Weight Spaceship</a>
                     </div>
