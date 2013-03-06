@@ -1,55 +1,73 @@
 <!doctype html>
 <html ng-app>
-	<head>
+    <head>
         <title>Conway's Game Of Life</title>
-		<script src="includes/angular.min.js" ></script>
-		<script src="includes/underscore-min.js" ></script>
-		<script src="gameOfLife.js"></script>
-		<link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" />
-	</head>
-	<body style="margin: 50px">
-		<div ng-controller="gameOfLife">
-			<h3>Conway's Game of Life</h3>
-			<div ng-repeat="row in cells">
-				<span ng-repeat="cell in row">
-					<input type="checkbox" ng-checked="cell.alive" ng-click="flipCell(cell)" />
-				</span>
-			</div>
+        <script src="includes/angular.min.js" ></script>
+        <script src="includes/underscore-min.js" ></script>
+        <script src="gameOfLife.js"></script>
+        <link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" />
+    </head>
+    <body style="margin: 50px">
+        <div ng-controller="GameOfLife">
+            <h3>Conway's Game of Life</h3>
+            <div ng-repeat="row in cells">
+                <span ng-repeat="cell in row">
+                    <input type="checkbox" ng-checked="cell.alive" ng-click="flipCell(cell)" />
+                </span>
+            </div>
             <br />
-            <form class="form-inline">
-                <button ng-click="step()" ng-disabled="animating"><i class="icon-step-forward"></i>Step 1</button>
-                <button ng-click="start()" ng-disabled="animating"><i class="icon-play"></i>Start</button>
-                <button ng-click="stop()" ng-disabled="!animating"><i class="icon-stop"></i>Stop</button>
-            </form>
-            <br />
-            <h4>Examples</h4>
             <form class="form-horizontal">
                 <div class="control-group">
-                    <label class="control-label" for="stillLifes">Still Lifes:</label>
-                    <div class="btn-group" id="stillLifes">
-                        <a class="btn" href="#" ng-click="createBlock()">Block</a>
-                        <a class="btn" href="#" ng-click="createBeehive()">Beehive</a>
-                        <a class="btn" href="#" ng-click="createLoaf()">Loaf</a>
-                        <a class="btn" href="#" ng-click="createBoat()">Boat</a>
+                    <button ng-click="step()" ng-disabled="animating"><i class="icon-step-forward"></i>Step</button>
+                    <button ng-click="start()" ng-disabled="animating"><i class="icon-play"></i>Start</button>
+                    <button ng-click="stop()" ng-disabled="!animating"><i class="icon-stop"></i>Stop</button>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="stillLifes">Still Lifes</label>
+                    <div class="controls">
+                        <div class="btn-group" id="stillLifes">
+                            <a class="btn" href="#" ng-click="createBlock()" ng-disabled="animating">Block</a>
+                            <a class="btn" href="#" ng-click="createBeehive()" ng-disabled="animating">Beehive</a>
+                            <a class="btn" href="#" ng-click="createLoaf()" ng-disabled="animating">Loaf</a>
+                            <a class="btn" href="#" ng-click="createBoat()" ng-disabled="animating">Boat</a>
+                        </div>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="oscillators">Oscillators:</label>
-                    <div class="btn-group" id="oscillators">
-                        <a class="btn" href="#" ng-click="createBlinker()">Blinker</a>
-                        <a class="btn" href="#" ng-click="createToad()">Toad</a>
-                        <a class="btn" href="#" ng-click="createBeacon()">Beacon</a>
-                        <a class="btn" href="#" ng-click="createPulsar()">Pulsar</a>
+                    <label class="control-label" for="oscillators">Oscillators</label>
+                    <div class="controls">
+                        <div class="btn-group" id="oscillators">
+                            <a class="btn" href="#" ng-click="createBlinker()" ng-disabled="animating">Blinker</a>
+                            <a class="btn" href="#" ng-click="createToad()" ng-disabled="animating">Toad</a>
+                            <a class="btn" href="#" ng-click="createBeacon()" ng-disabled="animating">Beacon</a>
+                            <a class="btn" href="#" ng-click="createPulsar()" ng-disabled="animating">Pulsar</a>
+                        </div>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="spaceships">Spaceships:</label>
-                    <div class="btn-group" id="spaceships">
-                        <a class="btn" href="#" ng-click="createGlider()">Glider</a>
-                        <a class="btn" href="#" ng-click="createLWSS()">Light Weight Spaceship</a>
+                    <label class="control-label" for="spaceships">Spaceships</label>
+                    <div class="controls">
+                        <div class="btn-group" id="spaceships">
+                            <a class="btn" href="#" ng-click="createGlider()" ng-disabled="animating">Glider</a>
+                            <a class="btn" href="#" ng-click="createLWSS()" ng-disabled="animating">Light Weight Spaceship</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="oscillators">Blank</label>
+                    <div class="controls">
+                        <!-- div class="input-append">
+                            <input class="span1" id="rows" type="text" ng-model="grid.rows">
+                            <span class="add-on">rows</span>
+                        </!-->
+                        <!-- div class="input-append">
+                            <input class="span1" id="cols" type="text" ng-model="grid.cols">
+                            <span class="add-on">columns</span>
+                        </!-->
+                        <button ng-click="create(20, 20)" ng-disabled="animating"><i class="icon-repeat"></i>Reset</button>
                     </div>
                 </div>
             </form>
-		</div>
-	</body>
+        </div>
+    </body>
 </html>

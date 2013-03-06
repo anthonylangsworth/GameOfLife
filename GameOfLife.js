@@ -281,7 +281,7 @@ Spaceships.prototype.createLWSS = function () {
 
 
 // Controller
-function gameOfLife($scope, $timeout) {
+function GameOfLife($scope, $timeout) {
     $scope.create = function (rows, cols) {
         $scope.cells = new GameOfLifeHelpers().create(rows, cols, false);
     };
