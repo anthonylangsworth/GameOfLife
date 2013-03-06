@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app>
+	<head>
+        <title>Conway's Game Of Life</title>
+		<script src="includes/angular.min.js" ></script>
+		<script src="includes/underscore-min.js" ></script>
+		<script src="gameOfLife.js"></script>
+		<link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" />
+	</head>
+	<body style="margin: 50px">
+		<div ng-controller="gameOfLife">
+			<h3>Conway's Game of Life</h3>
+			<div ng-repeat="row in cells">
+				<span ng-repeat="cell in row">
+					<input type="checkbox" ng-checked="cell.alive" ng-click="flipCell(cell)" />
+				</span>
+			</div>
+            <br />
+            <button ng-click="step()"><i class="icon-step-forward"></i>Step 1</button>
+            <button disabled="true"><i class="icon-play"></i>Run</button>
+            <br />
+            <br />
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="stillLifes">Still Lifes:</label>
+                    <div class="btn-group" id="stillLifes">
+                        <a class="btn" href="#" ng-click="createBlock()">Block</a>
+                        <a class="btn" href="#" ng-click="createBeehive()">Beehive</a>
+                        <a class="btn" href="#" ng-click="createLoaf()">Loaf</a>
+                        <a class="btn" href="#" ng-click="createBoat()">Boat</a>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="oscillators">Oscillators:</label>
+                    <div class="btn-group" id="oscillators">
+                        <a class="btn" href="#" ng-click="createBlinker()">Blinker</a>
+                        <a class="btn" href="#" ng-click="createToad()">Toad</a>
+                        <a class="btn" href="#" ng-click="createBeacon()">Beacon</a>
+                        <a class="btn" href="#" ng-click="createPulsar()">Pulsar</a>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="oscillators">Spaceships:</label>
+                    <div class="btn-group" id="Div1">
+                        <a class="btn" href="#" ng-click="createGlider()">Glider</a>
+                        <a class="btn" href="#" ng-click="createLWSS()">Light Weight Spaceship</a>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</body>
+</html>
