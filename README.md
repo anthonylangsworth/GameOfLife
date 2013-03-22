@@ -8,7 +8,8 @@ http://en.wikipedia.org/wiki/Conway's_Game_of_Life for more information).
 
 Bootstrap (http://twitter.github.com/bootstrap/index.html) is used for 
 styling and some automated unit tests are implemented using QUnit
-(http://api.qunitjs.com/). 
+(http://api.qunitjs.com/). Underscore (http://underscorejs.org/) is also
+used for some checks.
 
 License
 ---
